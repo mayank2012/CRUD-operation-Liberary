@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// MongoDB Connection with atlas
+// MongoDB Connection with Compass
 
 mongoose.connect('mongodb://localhost:27017/bookstore', {
   useNewUrlParser: true,
