@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// MongoDB Connection
+// MongoDB Connection with atlas
+
 mongoose.connect('mongodb://localhost:27017/bookstore', {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -19,7 +20,8 @@ const Book = mongoose.model('Book', {
 
 app.use(bodyParser.json());
 
-// Create a new bookf
+// Create a new book
+
 app.post('/books', async (req, res) => {
   try {
     const { title, author, summary } = req.body;
@@ -38,6 +40,7 @@ app.get('/books', async (req, res) => {
 });
 
 // View details of a specific book by its ID
+
 app.get('/books/:id', async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -52,6 +55,7 @@ app.get('/books/:id', async (req, res) => {
 });
 
 // Update a book's details
+
 app.put('/books/:id', async (req, res) => {
   try {
     const { title, author, summary } = req.body;
@@ -63,6 +67,7 @@ app.put('/books/:id', async (req, res) => {
 });
 
 // Delete a book
+
 app.delete('/books/:id', async (req, res) => {
   try {
     await Book.findByIdAndRemove(req.params.id);
